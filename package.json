@@ -1,9 +1,9 @@
 {
-  "name":"settings-bill-expressjs",
+  "name": "settings-bill-expressjs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts":{
+  "scripts": {
     "test": "mocha"
   },
   "author": "",
@@ -11,6 +11,11 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "mocha": "^9.0.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "moment": "^2.29.1"
   }
 }
- 
