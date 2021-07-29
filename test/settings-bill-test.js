@@ -6,7 +6,7 @@ describe('settings-bill', function(){
 
     it('should be able to record call', function(){
         settingsBill.recordAction('call');
-        assert.equal(0,settingsBill.actionsFor('call').length);
+        assert.equal(1,settingsBill.actionsFor('call').length);
     });
     
     it('should be able to set the settings', function(){

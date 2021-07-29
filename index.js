@@ -19,7 +19,10 @@ app.set('view engine', 'handlebars');
 app.engine('handlebars', handlebarSetup);
 app.set('view engine', 'handlebars');
 
-app.use(express.static('public'));
+// app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir:__dirname + '/views/layouts'}));
+// app.set('view engine', 'handlebars');
+
+// app.use(express.static('public'));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -27,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    if (settingsBill.values().warn === undefined ) {
+    if (settingsBill.values().warning === undefined ) {
         res.render('index', {
           settings: settingsBill.getSettings(),
           totals: settingsBill.totals(),
@@ -52,10 +55,12 @@ app.get('/', (req, res) => {
         res.render('index', {
           settings: settingsBill.getSettings(),
           totals: settingsBill.totals(),
-          globalTotal: 'globalTotal' 
+          globalTotal: 'critical' 
         }); 
     }
 });
+
+app.use(express.static('public'));
 
 app.post('/settings', (req, res) => {
     
@@ -75,14 +80,15 @@ app.post('/action', (req, res) => {
 });
 
 app.get('/actions', (req, res) => {
-    res.render('actions', {actions : settingsBill.actions()});
+    res.render('actions', {
+      actions : settingsBill.actions()});
  
 });
 
 app.get('/actions/:actionType', (req, res) => {
     const actionType = req.params.actionType;
-    res.render('actions', {actions : settingsBill.actionsFor(actionType)});
-   
+    res.render('actions', {
+      actions : settingsBill.actionsFor(actionType)}); 
 });
 
 const PORT = process.env.PORT || 3011;

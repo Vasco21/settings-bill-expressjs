@@ -28,7 +28,6 @@ module.exports = function SettingsBill(){
     var recordAction = function (action){
         let cost = 0;
         if(grandTotal () < criticalLevel){
-
             if (action === 'sms'){
                 cost = smsCost;
             }
@@ -48,7 +47,7 @@ module.exports = function SettingsBill(){
                 });
             }
             for (let i = 0; i < objList.length; i++) {
-                let = timestamp = moment(objList[i].timestamp).format('mmmm do yyyy, h:mm:ss a')                ;
+                let timestamp = moment(actionList[i].timestamp).format('mmmm do yyyy, h:mm:ss a')                ;
                 objList[i].timestamp = (moment(timestamp, 'mmmm do yyyy, h:mm:ss a').fromNow());
             }
         }
@@ -61,8 +60,8 @@ module.exports = function SettingsBill(){
     var actionsFor = function(type){
         const filter = [];
         
-        for (let i = 0; i < actionList.length; i++){
-            const action = actionList[i];
+        for (let i = 0; i < objList.length; i++){
+            const action = objList[i];
             if(action.type === type){
                 filter.push(action);
             }
