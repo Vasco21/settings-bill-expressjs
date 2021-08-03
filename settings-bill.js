@@ -47,8 +47,8 @@ module.exports = function SettingsBill(){
                 });
             }
             for (let i = 0; i < objList.length; i++) {
-                let timestamp = moment(actionList[i].timestamp).format('mmmm do yyyy, h:mm:ss a')                ;
-                objList[i].timestamp = (moment(timestamp, 'mmmm do yyyy, h:mm:ss a').fromNow());
+                let timestamp = moment(actionList[i].timestamp).format('YYYY-MM-DD hh:mm:ss a')                ;
+                objList[i].timestamp = (moment(timestamp, 'YYYY-MM-DD hh:mm:ss a').fromNow());
             }
         }
     }
