@@ -62,10 +62,12 @@ module.exports = function SettingsBill(){
         
         for (let i = 0; i < objList.length; i++){
             const action = objList[i];
-            if(action.type === type){
+            // console.log(action);
+            if(action.type === type && action.cost > 0){
                 filter.push(action);
+            
             }
-            else if(type == 'total'){
+            else if(action.type == 'total'){
                 filter.push(action);
             }
         }

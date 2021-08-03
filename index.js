@@ -19,10 +19,10 @@ app.set('view engine', 'handlebars');
 app.engine('handlebars', handlebarSetup);
 app.set('view engine', 'handlebars');
 
-// app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir:__dirname + '/views/layouts'}));
-// app.set('view engine', 'handlebars');
+app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir:__dirname + '/views/layouts'}));
+app.set('view engine', 'handlebars');
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    if (settingsBill.values().warning === undefined ) {
+    if (settingsBill.values().warningLevel === undefined ) {
         res.render('index', {
           settings: settingsBill.getSettings(),
           totals: settingsBill.totals(),
@@ -55,12 +55,10 @@ app.get('/', (req, res) => {
         res.render('index', {
           settings: settingsBill.getSettings(),
           totals: settingsBill.totals(),
-          globalTotal: 'critical' 
+          globalTotal: 'danger' 
         }); 
     }
 });
-
-app.use(express.static('public'));
 
 app.post('/settings', (req, res) => {
     
